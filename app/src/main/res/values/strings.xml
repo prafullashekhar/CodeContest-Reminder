@@ -11,4 +11,8 @@
     <string name="logout">Log Out</string>
     <string name="prev_user">previous user</string>
     <string name="current_user">Current User</string>
+
+    <string name="contest_name">Contest Name</string>
+    <string name="contest_id">Contest Id</string>
+
 </resources>

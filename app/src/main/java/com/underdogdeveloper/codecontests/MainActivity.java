@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=getIntent();
         final String currentUser=intent.getStringExtra(String.valueOf(R.string.current_user));
 // Initialising the adapter for recyclerView and setting that adapter
-        recyclerView = findViewById(R.id.recyclerView);
-        adapter=new ListAdapter(contestList,this);
-        recyclerView.setAdapter(adapter);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView = findViewById(R.id.recyclerView);
+//        adapter=new ListAdapter(contestList,this);
+//        recyclerView.setAdapter(adapter);
+//        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
 
     }
 
