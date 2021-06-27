@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 //                    while (i<response.length() && response.getJSONObject(i).getString("status").equals("CODING")){
 //                        i++;
 //                    }
-
+                    contestList.clear();
                     for(; i<response.length(); i++){
                         JSONObject currentContestJsonObject = response.getJSONObject(i);
 
