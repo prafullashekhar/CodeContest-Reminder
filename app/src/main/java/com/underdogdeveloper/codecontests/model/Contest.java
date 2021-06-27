@@ -15,6 +15,9 @@ public class Contest {
         FINISHED
     }
 
+    public Contest() {
+    }
+
     public Contest(int id, String name, String type, String phase, long durationSeconds, long startTimeSeconds, long relativeTimeSeconds, String websiteUrl ){
         this.id = id;
         this.name = name;
@@ -26,9 +29,18 @@ public class Contest {
         this.websiteUrl = websiteUrl;
     }
 
+    public Contest(String name, String type, String phase, long durationSeconds, long startTimeSeconds) {
+        this.name = name;
+        this.type = type;
+        this.phase = phase;
+        this.durationSeconds = durationSeconds;
+        this.startTimeSeconds = startTimeSeconds;
+    }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -44,6 +56,7 @@ public class Contest {
     public String getType() {
         return type;
     }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -51,6 +64,7 @@ public class Contest {
     public String getPhase() {
         return phase;
     }
+
     public void setPhase(String phase) {
         this.phase = phase;
     }
@@ -58,6 +72,7 @@ public class Contest {
     public long getDurationSeconds() {
         return durationSeconds;
     }
+
     public void setDurationSeconds(long durationSeconds) {
         this.durationSeconds = durationSeconds;
     }
@@ -65,6 +80,7 @@ public class Contest {
     public long getStartTimeSeconds() {
         return startTimeSeconds;
     }
+
     public void setStartTimeSeconds(long startTimeSeconds) {
         this.startTimeSeconds = startTimeSeconds;
     }
@@ -72,6 +88,7 @@ public class Contest {
     public long getRelativeTimeSeconds() {
         return relativeTimeSeconds;
     }
+
     public void setRelativeTimeSeconds(long relativeTimeSeconds) {
         this.relativeTimeSeconds = relativeTimeSeconds;
     }

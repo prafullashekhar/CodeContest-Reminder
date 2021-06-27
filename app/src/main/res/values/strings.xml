@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CodeContests</string>
+    <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="duration">Duration</string>
+    <string name="start">Start</string>
+    <string name="phase">Phase</string>
+    <string name="data_bas_name">Database</string>
+    <string name="user">User</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Log Out</string>
+    <string name="prev_user">previous user</string>
+    <string name="current_user">Current User</string>
 </resources>
