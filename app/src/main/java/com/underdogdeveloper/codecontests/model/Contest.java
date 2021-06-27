@@ -4,7 +4,6 @@ public class Contest {
     String name = "";
     String url = "";
     String start_time = "";
-    String end_time = "";
     long duration = 0;
     String site ="";
     String status = "";
@@ -12,11 +11,10 @@ public class Contest {
     public Contest() {
     }
 
-    public Contest(String name, String url, String start_time, String end_time, long duration, String site, String status ){
+    public Contest(String name, String url, String start_time, long duration, String site, String status ){
         this.name = name;
         this.url = url;
         this.start_time = start_time;
-        this.end_time = end_time;
         this.duration = duration;
         this.site = site;
         this.status = status;
@@ -45,14 +43,6 @@ public class Contest {
 
     public void setStart_time(String start_time) {
         this.start_time = start_time;
-    }
-
-    public String getEnd_time() {
-        return end_time;
-    }
-
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
     }
 
     public long getDuration() {

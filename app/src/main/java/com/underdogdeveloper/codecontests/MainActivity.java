@@ -111,13 +111,12 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject currentContestJsonObject = response.getJSONObject(i);
 
                         Contest contest = new Contest(
-                                currentContestJsonObject.getString("name").toString(),
-                                currentContestJsonObject.getString("url").toString(),
-                                currentContestJsonObject.getString("start_time").toString(),
-                                currentContestJsonObject.getString("end_time").toString(),
+                                currentContestJsonObject.getString("name"),
+                                currentContestJsonObject.getString("url"),
+                                currentContestJsonObject.getString("start_time"),
                                 currentContestJsonObject.getLong("duration"),
-                                currentContestJsonObject.getString("site").toString(),
-                                currentContestJsonObject.getString("status").toString()
+                                currentContestJsonObject.getString("site"),
+                                currentContestJsonObject.getString("status")
                         );
                         contestList.add(contest);
 
