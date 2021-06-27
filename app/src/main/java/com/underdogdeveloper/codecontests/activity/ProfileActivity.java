@@ -122,11 +122,9 @@ public class ProfileActivity extends AppCompatActivity {
                     contestHistories.clear();
 
                     JSONArray contestHistoryJsonArray = response.getJSONArray("result");
-                    int length = 5;
-                    if(contestHistoryJsonArray.length() < 5)
-                        length = contestHistoryJsonArray.length();
+                    int length = contestHistoryJsonArray.length();
 
-                    for(int i=0; i<contestHistoryJsonArray.length(); i++){
+                    for(int i=length-1; i>=0 && length-i<=5; i--){
                         JSONObject currentContestJsonObject = contestHistoryJsonArray.getJSONObject(i);
 
                         ContestHistory contestHistory = new ContestHistory(

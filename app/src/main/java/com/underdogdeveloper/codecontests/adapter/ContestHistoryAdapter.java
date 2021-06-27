@@ -42,9 +42,7 @@ public class ContestHistoryAdapter extends RecyclerView.Adapter<ContestHistoryAd
 
     @Override
     public int getItemCount() {
-        if(list.size() < 5)
-            return list.size();
-        return 5;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
