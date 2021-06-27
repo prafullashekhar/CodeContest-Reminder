@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
     TextView handle, rating, maxrating, friendof, country, organisation;
     RecyclerView recyclerView;
+    LinearLayout linearLayout;
     ArrayList<ContestHistory> contestHistories=new ArrayList<>();
 
     @Override
@@ -49,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.prevContestView);
 
         ContestHistory contestHistory=new ContestHistory("Nipun",100,50,1090,1040);
+        contestHistories.add(contestHistory);
+        contestHistories.add(contestHistory);
         contestHistories.add(contestHistory);
         contestHistories.add(contestHistory);
         ContestHistoryAdapter adapter=new ContestHistoryAdapter(this,contestHistories);
