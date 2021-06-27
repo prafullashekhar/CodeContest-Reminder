@@ -11,14 +11,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 import com.underdogdeveloper.codecontests.activity.ProfileActivity;
 import com.underdogdeveloper.codecontests.adapter.ListAdapter;
 import com.underdogdeveloper.codecontests.model.Contest;
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Contest> contestList=new ArrayList<>();
+    ArrayList<Contest> contestList;
     RecyclerView recyclerView;
     ListAdapter adapter;
 
@@ -44,15 +48,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        fetchData();
+
+
         Intent intent=getIntent();
         final String currentUser=intent.getStringExtra(String.valueOf(R.string.current_user));
-// Initialising the adapter for recyclerView and setting that adapter
-//        recyclerView = findViewById(R.id.recyclerView);
-//        adapter=new ListAdapter(contestList,this);
-//        recyclerView.setAdapter(adapter);
-//        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
+
+        // Initialising the adapter for recyclerView and setting that adapter
+        recyclerView = findViewById(R.id.recyclerView);
+        contestList = new ArrayList<>();
+
+        // calling API and adding elements in contestList
+        getContestDAta();
+
+        adapter=new ListAdapter(contestList,this);
+
 
     }
 
@@ -67,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
         int id=item.getItemId();
         switch (id){
             case R.id.profile: startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                                break;
+                break;
             case R.id.logOut : logoutUser();
-                                break;
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -82,32 +91,55 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this,SignInActivity.class).putExtra(String.valueOf(R.string.prev_user),user));
     }
 
-    private void fetchData() {
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-        String url = "https://codeforces.com/api/contest.list";
-        Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+    private void getContestDAta(){
+        String url="https://kontests.net/api/v1/all";
+        // initiate the request
+        RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray=response.getJSONArray("result");
+            public void onResponse(JSONArray response) {
+                try{
                     contestList.clear();
-                    for(int i=0;i<jsonArray.length();i++){
-                        JSONObject object=jsonArray.getJSONObject(i);
-                        String name=object.getString("name");
-                        Contest contest=new Contest();
-                        contest.setName(name);
+                    int i=0;
+//                    while (i<response.length() && response.getJSONObject(i).getString("status").equals("CODING")){
+//                        i++;
+//                    }
+
+                    for(; i<response.length(); i++){
+                        JSONObject currentContestJsonObject = response.getJSONObject(i);
+
+                        Contest contest = new Contest(
+                                currentContestJsonObject.getString("name").toString(),
+                                currentContestJsonObject.getString("url").toString(),
+                                currentContestJsonObject.getString("start_time").toString(),
+                                currentContestJsonObject.getString("end_time").toString(),
+                                currentContestJsonObject.getLong("duration"),
+                                currentContestJsonObject.getString("site").toString(),
+                                currentContestJsonObject.getString("status").toString()
+                        );
                         contestList.add(contest);
+
                     }
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
+                }catch (JSONException e){
                     e.printStackTrace();
                 }
+
+                recyclerView.setAdapter(adapter);
+                LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
+                recyclerView.setLayoutManager(layoutManager);
+
             }
-        } , error -> Log.d("Nipun","Something went wrong"));
-        queue.add(jsonObjectRequest);
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "check internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue.add(jsonArrayRequest);
+
     }
 
 }

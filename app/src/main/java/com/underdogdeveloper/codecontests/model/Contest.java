@@ -1,49 +1,27 @@
 package com.underdogdeveloper.codecontests.model;
 
 public class Contest {
-    int id =0;
     String name = "";
-    String type = "";
-    String phase = null;
-    long durationSeconds = 0;
-    long startTimeSeconds = 0;
-    long relativeTimeSeconds = 0;
-    String websiteUrl = "";
-
-    enum PHASE {
-        BEFORE,
-        FINISHED
-    }
+    String url = "";
+    String start_time = "";
+    String end_time = "";
+    long duration = 0;
+    String site ="";
+    String status = "";
 
     public Contest() {
     }
 
-    public Contest(int id, String name, String type, String phase, long durationSeconds, long startTimeSeconds, long relativeTimeSeconds, String websiteUrl ){
-        this.id = id;
+    public Contest(String name, String url, String start_time, String end_time, long duration, String site, String status ){
         this.name = name;
-        this.type = type;
-        this.phase = phase;
-        this.durationSeconds = durationSeconds;
-        this.startTimeSeconds = startTimeSeconds;
-        this.relativeTimeSeconds = relativeTimeSeconds;
-        this.websiteUrl = websiteUrl;
+        this.url = url;
+        this.start_time = start_time;
+        this.end_time = end_time;
+        this.duration = duration;
+        this.site = site;
+        this.status = status;
     }
 
-    public Contest(String name, String type, String phase, long durationSeconds, long startTimeSeconds) {
-        this.name = name;
-        this.type = type;
-        this.phase = phase;
-        this.durationSeconds = durationSeconds;
-        this.startTimeSeconds = startTimeSeconds;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -53,51 +31,52 @@ public class Contest {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getUrl() {
+        return url;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getPhase() {
-        return phase;
+    public String getStart_time() {
+        return start_time;
     }
 
-    public void setPhase(String phase) {
-        this.phase = phase;
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 
-    public long getDurationSeconds() {
-        return durationSeconds;
+    public String getEnd_time() {
+        return end_time;
     }
 
-    public void setDurationSeconds(long durationSeconds) {
-        this.durationSeconds = durationSeconds;
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 
-    public long getStartTimeSeconds() {
-        return startTimeSeconds;
+    public long getDuration() {
+        return duration;
     }
 
-    public void setStartTimeSeconds(long startTimeSeconds) {
-        this.startTimeSeconds = startTimeSeconds;
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 
-    public long getRelativeTimeSeconds() {
-        return relativeTimeSeconds;
+    public String getSite() {
+        return site;
     }
 
-    public void setRelativeTimeSeconds(long relativeTimeSeconds) {
-        this.relativeTimeSeconds = relativeTimeSeconds;
+    public void setSite(String site) {
+        this.site = site;
     }
 
-    public String getWebsiteUrl() {
-        return websiteUrl;
+    public String getStatus() {
+        return status;
     }
 
-    public void setWebsiteUrl(String websiteUrl) {
-        this.websiteUrl = websiteUrl;
+    public void setStatus(String status) {
+        this.status = status;
     }
+
 }
