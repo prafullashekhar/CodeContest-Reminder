@@ -19,14 +19,18 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.underdogdeveloper.codecontests.MainActivity;
 import com.underdogdeveloper.codecontests.R;
 
 import com.squareup.picasso.Picasso;
 import com.underdogdeveloper.codecontests.adapter.ContestHistoryAdapter;
+import com.underdogdeveloper.codecontests.model.Contest;
 import com.underdogdeveloper.codecontests.model.ContestHistory;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,12 +40,15 @@ public class ProfileActivity extends AppCompatActivity {
     TextView handle, rating, maxrating, friendof, country, organisation;
     RecyclerView recyclerView;
     LinearLayout linearLayout;
-    ArrayList<ContestHistory> contestHistories=new ArrayList<>();
+    ArrayList<ContestHistory> contestHistories;
+    ContestHistoryAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        contestHistories = new ArrayList<>();
 
         handle = findViewById(R.id.handle);
         rating = findViewById(R.id.rating);
@@ -51,20 +58,16 @@ public class ProfileActivity extends AppCompatActivity {
         organisation = findViewById(R.id.organization);
         recyclerView=findViewById(R.id.prevContestView);
 
-        ContestHistory contestHistory=new ContestHistory("Nipun",100,50,1090,1040);
-        contestHistories.add(contestHistory);
-        contestHistories.add(contestHistory);
-        contestHistories.add(contestHistory);
-        contestHistories.add(contestHistory);
-        ContestHistoryAdapter adapter=new ContestHistoryAdapter(this,contestHistories);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter=new ContestHistoryAdapter(this,contestHistories);
+
+
         // assigning the userId from sharedPreferences
         SharedPreferences sharedPreferences=getSharedPreferences(String.valueOf(R.string.data_bas_name),MODE_PRIVATE);
         String userHandler=sharedPreferences.getString(String.valueOf(R.string.user),null);
 
 
         getUserData(userHandler);
+        getContestHistoryData(userHandler);
     }
 
     private void getUserData(String userId){
@@ -103,4 +106,51 @@ public class ProfileActivity extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
     }
+
+    private void getContestHistoryData(String userId){
+        String url="https://codeforces.com/api/user.rating?handle=" + userId;
+        // initiate the request
+        RequestQueue requestQueue= Volley.newRequestQueue(ProfileActivity.this);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+
+            // String contestName, int rank, int ratingChange, int newRating, int oldRating
+
+            public void onResponse(JSONObject response) {
+                try{
+                    contestHistories.clear();
+
+                    JSONArray contestHistoryJsonArray = response.getJSONArray("result");
+                    for(int i=0; i<contestHistoryJsonArray.length(); i++){
+                        JSONObject currentContestJsonObject = contestHistoryJsonArray.getJSONObject(i);
+
+                        ContestHistory contestHistory = new ContestHistory(
+                                currentContestJsonObject.getString("contestName").toString(),
+                                currentContestJsonObject.getInt("rank"),
+                                currentContestJsonObject.getInt("newRating"),
+                                currentContestJsonObject.getInt("oldRating")
+                        );
+                        contestHistories.add(contestHistory);
+
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ProfileActivity.this, "check internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
 }
