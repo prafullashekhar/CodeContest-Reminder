@@ -1,6 +1,7 @@
 package com.underdogdeveloper.codecontests.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +34,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         return new viewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+
         Contest contest=list.get(position);
+
         holder.name.setText(contest.getName());
-//        holder.type.setText(contest.getType());
-//        holder.duration.setText(String.valueOf(contest.getDurationSeconds()));
-//        holder.start.setText(String.valueOf(contest.getStartTimeSeconds()));
+        holder.site.setText(contest.getSite());
+//        holder.duration.setText((int) contest.getDuration());
+        holder.start.setText(contest.getStart_time());
+
     }
 
     @Override
@@ -49,16 +54,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
     // viewHolder class
     public class viewHolder extends RecyclerView.ViewHolder {
-        TextView name,type,duration,start,phase;
+        TextView name,site, duration,start;
         ImageView alertAlarm;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.name);
-            type=itemView.findViewById(R.id.type);
+            site=itemView.findViewById(R.id.site);
             duration=itemView.findViewById(R.id.duration);
             start=itemView.findViewById(R.id.start);
-            phase=itemView.findViewById(R.id.phase);
+
             alertAlarm=itemView.findViewById(R.id.alertAlarm);
         }
     }
