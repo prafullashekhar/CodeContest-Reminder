@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,12 +22,18 @@ import com.android.volley.toolbox.Volley;
 import com.underdogdeveloper.codecontests.R;
 
 import com.squareup.picasso.Picasso;
+import com.underdogdeveloper.codecontests.adapter.ContestHistoryAdapter;
+import com.underdogdeveloper.codecontests.model.ContestHistory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ProfileActivity extends AppCompatActivity {
     TextView handle, rating, maxrating, friendof, country, organisation;
+    RecyclerView recyclerView;
+    ArrayList<ContestHistory> contestHistories=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,14 @@ public class ProfileActivity extends AppCompatActivity {
         friendof = findViewById(R.id.friendsof);
         country = findViewById(R.id.country);
         organisation = findViewById(R.id.organization);
+        recyclerView=findViewById(R.id.prevContestView);
 
+        ContestHistory contestHistory=new ContestHistory("Nipun",100,50,1090,1040);
+        contestHistories.add(contestHistory);
+        contestHistories.add(contestHistory);
+        ContestHistoryAdapter adapter=new ContestHistoryAdapter(this,contestHistories);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // assigning the userId from sharedPreferences
         SharedPreferences sharedPreferences=getSharedPreferences(String.valueOf(R.string.data_bas_name),MODE_PRIVATE);
         String userHandler=sharedPreferences.getString(String.valueOf(R.string.user),null);
