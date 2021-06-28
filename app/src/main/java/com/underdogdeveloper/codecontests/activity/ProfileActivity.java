@@ -34,7 +34,6 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
     TextView handle, rating, maxrating, friendof, country, organisation;
     RecyclerView recyclerView;
-    LinearLayout linearLayout;
 
     ArrayList<ContestHistory> contestHistories;
     ContestHistoryAdapter adapter;

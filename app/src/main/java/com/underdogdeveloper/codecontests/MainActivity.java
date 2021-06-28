@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 import com.underdogdeveloper.codecontests.activity.ProfileActivity;
+import com.underdogdeveloper.codecontests.activity.ShowAlarmActivity;
 import com.underdogdeveloper.codecontests.adapter.ListAdapter;
 import com.underdogdeveloper.codecontests.model.Contest;
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.profile: startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
+            case R.id.Alarm:startActivity(new Intent(MainActivity.this, ShowAlarmActivity.class));
+            break;
             case R.id.logOut : logoutUser();
                 break;
         }
