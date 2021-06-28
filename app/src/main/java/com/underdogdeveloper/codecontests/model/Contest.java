@@ -6,18 +6,16 @@ public class Contest {
     String start_time = "";
     long duration = 0;
     String site ="";
-    String status = "";
 
     public Contest() {
     }
 
-    public Contest(String name, String url, String start_time, long duration, String site, String status ){
+    public Contest(String name, String url, String start_time, long duration, String site){
         this.name = name;
         this.url = url;
         this.start_time = start_time;
         this.duration = duration;
         this.site = site;
-        this.status = status;
     }
 
 
@@ -61,12 +59,5 @@ public class Contest {
         this.site = site;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
 }

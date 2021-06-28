@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=getIntent();
         final String currentUser=intent.getStringExtra(String.valueOf(R.string.current_user));
 
-        // Initialising the adapter for recyclerView and setting that adapter
+        /*
+         *  // Initialising the adapter for recyclerView
+         */
         recyclerView = findViewById(R.id.recyclerView);
         contestList = new ArrayList<>();
 
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getContestDAta(){
         String url="https://kontests.net/api/v1/all";
+
         // initiate the request
         RequestQueue requestQueue= Volley.newRequestQueue(MainActivity.this);
 
@@ -115,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
                                 currentContestJsonObject.getString("url"),
                                 currentContestJsonObject.getString("start_time"),
                                 currentContestJsonObject.getLong("duration"),
-                                currentContestJsonObject.getString("site"),
-                                currentContestJsonObject.getString("status")
+                                currentContestJsonObject.getString("site")
                         );
                         contestList.add(contest);
 
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                // setting recyclerView and adapter
                 recyclerView.setAdapter(adapter);
                 LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(layoutManager);
