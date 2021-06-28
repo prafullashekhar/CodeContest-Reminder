@@ -36,7 +36,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
     public void onBindViewHolder(@NonNull AlarmAdapter.ReminderViewHolder holder, int position) {
 
         AlarmModel model = list.get(position);
-
+        setAlarmOn(model);
 
 
     }

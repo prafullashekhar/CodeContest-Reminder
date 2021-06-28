@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,26 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         String startTimewithFormat=getStringFormat(startTimeWithoutFormat);
         holder.start.setText(startTimewithFormat);
 
+        switch(contest.getSite()){
+            case "CodeForces":
+                holder.logoImage.setImageResource(R.drawable.codeforces_logo);
+                break;
+            case "CodeChef":
+                holder.logoImage.setImageResource(R.drawable.codechef_logo);
+                break;
+            case "HackerRank":
+                holder.logoImage.setImageResource(R.drawable.hackerrank_logo);
+                break;
+            case "HackerEarth":
+                holder.logoImage.setImageResource(R.drawable.hackerearth_logo);
+                break;
+            case "LeetCode":
+                holder.logoImage.setImageResource(R.drawable.leetcode_logo);
+                break;
+            case "TopCoder":
+                holder.logoImage.setImageResource(R.drawable.topcoder_logo);
+                break;
+        }
     }
 
     private String getStringFormat(String startTime){
