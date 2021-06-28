@@ -10,7 +10,7 @@ public class ContestHistory {
     public ContestHistory(String contestName, int rank, int newRating, int oldRating) {
         this.contestName = contestName;
         this.rank = rank;
-        this.ratingChange=newRating-oldRating;
+        this.ratingChange = newRating - oldRating;
         this.newRating = newRating;
         this.oldRating = oldRating;
     }

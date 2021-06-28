@@ -14,12 +14,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.underdogdeveloper.codecontests.MainActivity;
 import com.underdogdeveloper.codecontests.R;
 
 import com.squareup.picasso.Picasso;
 import com.underdogdeveloper.codecontests.adapter.ContestHistoryAdapter;
+import com.underdogdeveloper.codecontests.model.Contest;
 import com.underdogdeveloper.codecontests.model.ContestHistory;
 
 import org.json.JSONArray;
@@ -31,6 +34,8 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
     TextView handle, rating, maxrating, friendof, country, organisation;
     RecyclerView recyclerView;
+    LinearLayout linearLayout;
+
     ArrayList<ContestHistory> contestHistories;
     ContestHistoryAdapter adapter;
 
@@ -124,7 +129,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 currentContestJsonObject.getString("contestName").toString(),
                                 currentContestJsonObject.getInt("rank"),
                                 currentContestJsonObject.getInt("newRating"),
-                                currentContestJsonObject.getInt("oldRating"));
+                                currentContestJsonObject.getInt("oldRating")
+                        );
                         contestHistories.add(contestHistory);
 
                     }
