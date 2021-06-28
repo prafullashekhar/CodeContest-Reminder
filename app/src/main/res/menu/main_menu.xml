@@ -5,9 +5,9 @@
         android:title="@string/setting"
         android:icon="@drawable/ic_profile"
         app:showAsAction="always"/>
+    <item android:id="@+id/Alarm"
+        android:title="Alarms"/>
     <item android:id="@+id/logOut"
         android:title="@string/logout"
-        app:showAsAction="always"
         android:icon="@drawable/ic_login"/>
-
 </menu>

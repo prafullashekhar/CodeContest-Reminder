@@ -3,7 +3,6 @@ package com.underdogdeveloper.codecontests.activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.underdogdeveloper.codecontests.R;
 
 public class ShowAlarmActivity extends AppCompatActivity {

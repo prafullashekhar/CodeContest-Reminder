@@ -5,13 +5,20 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeContests">
+
+
+        <activity android:name=".activity.ShowAlarmActivity"></activity>
+        <activity android:name=".activity.ProfileActivity" />
 
         <activity android:name=".SignInActivity">
             <intent-filter>
@@ -21,9 +28,9 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".MainActivity"></activity>
 
-        <activity android:name=".activity.ProfileActivity"></activity>
 
         <receiver android:name=".BroadCasts.AlarmReciever"
             android:enabled="true"
