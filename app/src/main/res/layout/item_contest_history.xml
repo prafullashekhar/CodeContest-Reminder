@@ -173,10 +173,10 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="105dp"
+                android:layout_height="89dp"
                 android:padding="10dp"
-                android:src="@drawable/cf_logo" />
+                android:src="@drawable/codeforces_logo" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

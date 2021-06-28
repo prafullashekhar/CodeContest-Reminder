@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.ShowAlarmActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/show_alarm_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="111dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

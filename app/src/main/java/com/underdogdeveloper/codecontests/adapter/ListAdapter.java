@@ -36,7 +36,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater is used to convert xml format to view
-        View view = LayoutInflater.from(context).inflate(R.layout.item_contest, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_alarm, parent, false);
         return new viewHolder(view);
     }
 
@@ -54,6 +54,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         String startTimewithFormat=getStringFormat(startTimeWithoutFormat);
         holder.start.setText(startTimewithFormat);
 
+        // setting logo of various sites
         switch(contest.getSite()){
             case "CodeForces":
                 holder.logoImage.setImageResource(R.drawable.codeforces_logo);
@@ -76,7 +77,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         }
     }
 
-    private String getStringFormat(String startTime){
+    public String getStringFormat(String startTime){
         String formatString=null;
         String time=startTime.substring(11,16);
         String year=startTime.substring(0,4);
@@ -86,7 +87,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         formatString=time+" "+date+"-"+month+"-"+year;
         return formatString;
     }
-    private String numToEng(int month){
+    public String numToEng(int month){
         String engMonth=null;
         switch (month){
             case 1: engMonth="Jan";

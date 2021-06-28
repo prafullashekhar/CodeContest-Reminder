@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/prev_contest_drawable"
+    android:padding="4dp"
+    android:gravity="center"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:background="#d3cfff"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/marginstart"
+        android:src="@drawable/ic_alert_on"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="@dimen/marginstart"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:layout_toStartOf="@+id/alertAlarm"
+        android:layout_toEndOf="@+id/logoImageView"
+        android:layout_toRightOf="@id/logoImageView"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/contestName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:ellipsize="marquee"
+            android:textStyle="bold"
+            android:padding="2dp"
+            android:singleLine="true"
+            android:text="Contest"
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+        <TextView
+            android:id="@+id/site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginstart"
+            android:text="Hackerrank"
+            android:textSize="19sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginstart"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/startTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="time"
+                android:textSize="@dimen/textsize" />
+
+            <TextView
+                android:id="@+id/durationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:text="Duration"
+                android:textSize="@dimen/textsize" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/alertAlarm"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/marginstart"
+        android:layout_alignParentRight="true"
+        android:background="#d3cfff"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_alert_on"/>
+</RelativeLayout>
