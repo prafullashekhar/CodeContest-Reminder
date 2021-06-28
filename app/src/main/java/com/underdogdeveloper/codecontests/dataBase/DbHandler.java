@@ -21,7 +21,7 @@ public class DbHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 //        Creatting the alarm table in sql
-        String sql="CREATE TABLE ALARM (sno INTEGER PRIMARY KEY AUTOINCREMENT, HOUR INTEGER, MINUTE INTEGER, DATE TEXT,ALARMSTATE INTEGER)";
+        String sql="CREATE TABLE ALARM (sno INTEGER PRIMARY KEY AUTOINCREMENT, HOUR INTEGER, MINUTE INTEGER, STRDATE TEXT,ALARMSTATE INTEGER)";
         db.execSQL(sql);
     }
     public void addAlarm(AlarmModel alarm){
@@ -31,7 +31,7 @@ public class DbHandler extends SQLiteOpenHelper {
         ContentValues values=new ContentValues();
         values.put("HOUR",alarm.getHour());
         values.put("MINUTE",alarm.getMinute());
-        values.put("DATE",alarm.getDate());
+        values.put("STRDATE",alarm.getDate());
         values.put("ALARMSTATE",alarm.getAlarmState());
         long k=database.insert("ALARM",null,values);
         Log.d("MyTag",Long.toString(k));
@@ -47,7 +47,7 @@ public class DbHandler extends SQLiteOpenHelper {
             alarmModel.setSno(cursor.getInt(0));
             alarmModel.setHour(cursor.getInt(1));
             alarmModel.setMinute(cursor.getInt(2));
-            alarmModel.setDate(cursor.getString(3));
+            alarmModel.setStrDate(cursor.getString(3));
             alarmModel.setAlarmState(cursor.getInt(4));
         }
         return alarmModel;

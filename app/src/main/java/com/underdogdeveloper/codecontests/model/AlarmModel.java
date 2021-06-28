@@ -1,18 +1,26 @@
 package com.underdogdeveloper.codecontests.model;
 
 public class AlarmModel {
-    int sno,hour,minute,alarmState;
-    String date;
+    int sno,year, month, date, hour,minute,alarmState;
+    String strDate;
 
     public AlarmModel(){
 
     }
 
-    public AlarmModel(int hour, int minute, int alarmState, String date){
+    public String getStrDate() {
+        return strDate;
+    }
+
+    public void setStrDate(String strDate) {
+        this.strDate = strDate;
+    }
+
+    public AlarmModel(int hour, int minute, int alarmState, String strDate){
         this.hour = hour;
         this.minute = minute;
         this.alarmState = alarmState;
-        this.date = date;
+        this.strDate = strDate;
     }
 
     public int getSno() {
@@ -25,6 +33,30 @@ public class AlarmModel {
 
     public int getHour() {
         return hour;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
     }
 
     public void setHour(int hour) {
@@ -47,11 +79,5 @@ public class AlarmModel {
         this.alarmState = alarmState;
     }
 
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 }
