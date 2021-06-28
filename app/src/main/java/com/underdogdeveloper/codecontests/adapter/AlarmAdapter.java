@@ -52,6 +52,28 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
 //        String startTimewithFormat=getStringFormat(startTimeWithoutFormat);
 //        holder.start.setText(startTimewithFormat);
 
+        // setting logo of various sites
+        switch(contest.getSite()){
+            case "CodeForces":
+                holder.logoImage.setImageResource(R.drawable.codeforces_logo);
+                break;
+            case "CodeChef":
+                holder.logoImage.setImageResource(R.drawable.codechef_logo);
+                break;
+            case "HackerRank":
+                holder.logoImage.setImageResource(R.drawable.hackerrank_logo);
+                break;
+            case "HackerEarth":
+                holder.logoImage.setImageResource(R.drawable.hackerearth_logo);
+                break;
+            case "LeetCode":
+                holder.logoImage.setImageResource(R.drawable.leetcode_logo);
+                break;
+            case "TopCoder":
+                holder.logoImage.setImageResource(R.drawable.topcoder_logo);
+                break;
+        }
+
     }
 
     public String getStringFormat(String startTime){
