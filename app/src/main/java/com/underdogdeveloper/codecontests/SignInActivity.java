@@ -120,7 +120,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(SignInActivity.this, "check internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, "No user found or something went wrong", Toast.LENGTH_SHORT).show();
                 Log.d("Nipun","something went wrong");
             }
         });
