@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.underdogdeveloper.codecontests.MainActivity;
@@ -93,12 +94,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         holder.alertAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAlarmDatabase();
+                setAlarmDatabase(contest);
             }
         });
     }
 
-    private void setAlarmDatabase() {
+    private void setAlarmDatabase(Contest contest) {
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
     }
 
