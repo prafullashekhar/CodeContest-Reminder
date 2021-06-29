@@ -8,30 +8,31 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="132dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="144dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cf" />
+        app:srcCompat="@drawable/codeforces_logo" />
 
     <EditText
         android:id="@+id/etHandler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
-        android:hint="please enter your preffered handle"
-        android:inputType="textPersonName"
+        android:hint="please enter Codeforces handle"
         android:imeOptions="actionDone"
+        android:inputType="textPersonName"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -39,11 +40,12 @@
         android:id="@+id/signIn"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/next_button_bg"
         android:padding="7dp"
         android:src="@drawable/ic_arrow_forward"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etHandler" />
 </androidx.constraintlayout.widget.ConstraintLayout>
