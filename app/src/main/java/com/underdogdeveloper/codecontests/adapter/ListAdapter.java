@@ -43,7 +43,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         // LayoutInflater is used to convert xml format to view
         View view = LayoutInflater.from(context).inflate(R.layout.item_alarm, parent, false);
 
-//        view.setOnClickListener();
         return new viewHolder(view, mListener);
     }
 
