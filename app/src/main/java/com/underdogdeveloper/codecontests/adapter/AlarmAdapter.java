@@ -4,13 +4,17 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.underdogdeveloper.codecontests.BroadCasts.AlarmReciever;
@@ -73,7 +77,24 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
                 holder.logoImage.setImageResource(R.drawable.topcoder_logo);
                 break;
         }
+        holder.contestOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(context, Uri.parse(contest.getUrl()));
+            }
+        });
+        holder.deleteAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteAlarmDatabase(model);
+            }
+        });
+    }
 
+    private void deleteAlarmDatabase(AlarmModel model) {
+        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
     }
 
     public String getStringFormat(String startTime){
@@ -125,17 +146,19 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
 
     public class ReminderViewHolder extends RecyclerView.ViewHolder {
         TextView name,site,duration,start;
-        ImageView logoImage,alertAlarm;
+        ImageView logoImage,deleteAlarm;
+        LinearLayout contestOpen;
 
         public ReminderViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.contestName);
-            duration=itemView.findViewById(R.id.durationTime);
-            site=itemView.findViewById(R.id.site);
-            start=itemView.findViewById(R.id.startTime);
+            name=itemView.findViewById(R.id.contestNameAlarm);
+            duration=itemView.findViewById(R.id.durationTimeAlarm);
+            site=itemView.findViewById(R.id.siteAlarm);
+            start=itemView.findViewById(R.id.startTimeAlarm);
 
-            logoImage=itemView.findViewById(R.id.logoImageView);
-            alertAlarm=itemView.findViewById(R.id.alertAlarm);
+            logoImage=itemView.findViewById(R.id.logoImageViewAlarm);
+            deleteAlarm=itemView.findViewById(R.id.deleteAlarm);
+            contestOpen=itemView.findViewById(R.id.contestOpenAlarm);
         }
     }
 }

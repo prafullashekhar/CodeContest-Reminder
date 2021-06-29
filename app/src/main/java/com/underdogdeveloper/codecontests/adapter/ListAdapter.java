@@ -45,6 +45,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         // LayoutInflater is used to convert xml format to view
         View view = LayoutInflater.from(context).inflate(R.layout.item_contest, parent, false);
 
+//        view.setOnClickListener();
         return new viewHolder(view);
     }
 
@@ -100,6 +101,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         });
     }
 
+
     private void setAlarmDatabase(Contest contest) {
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
         AlarmModel model = new AlarmModel(contest);
@@ -111,7 +113,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         DbHandler handler = new DbHandler(context);
         handler.addAlarm(model);
         handler.close();
-
     }
 
     public String getStringFormat(String startTime){
