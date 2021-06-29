@@ -49,6 +49,8 @@ public class ShowAlarmActivity extends AppCompatActivity {
         // example of adding
         Contest contest= new Contest();
         contest.setName("mohan");
+        contest.setSite("CodeForces");
+        contest.setUrl("https://www.google.com");
         model.setContest(contest);
         alarmModelList.add(model);
 

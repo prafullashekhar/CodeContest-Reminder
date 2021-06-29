@@ -99,7 +99,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         });
     }
 
-    private void setAlarmDatabase(Contest contest) {
+    private void setAlarmDatabase(Contest contestc) {
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
     }
 
