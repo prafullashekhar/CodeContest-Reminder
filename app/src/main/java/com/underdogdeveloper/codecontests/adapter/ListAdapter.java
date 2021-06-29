@@ -103,15 +103,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
 
     private void setAlarmDatabase(Contest contest) {
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
         AlarmModel model = new AlarmModel(contest);
-
+        model.setAlarmState(1);
         // setting alarm
         setAlarmOn(model);
-
         // adding to database
         DbHandler handler = new DbHandler(context);
         handler.addAlarm(model);
+        Toast.makeText(context, "Alarm Added", Toast.LENGTH_SHORT).show();
         handler.close();
     }
 
