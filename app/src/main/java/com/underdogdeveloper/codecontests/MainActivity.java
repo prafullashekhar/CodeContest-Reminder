@@ -2,11 +2,13 @@ package com.underdogdeveloper.codecontests;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -64,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
         getContestDAta();
 
         adapter=new ListAdapter(contestList,this);
+
+        // handling click on item_contest and opening the url
+        adapter.setOnViewClickListener(new ListAdapter.OnViewClickListener() {
+            @Override
+            public void onItemClicked(int position){
+
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(MainActivity.this, Uri.parse(contestList.get(position).getUrl()));
+            }
+        });
 
 
     }

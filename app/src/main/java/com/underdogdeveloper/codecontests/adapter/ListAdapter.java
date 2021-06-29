@@ -26,10 +26,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
     ArrayList<Contest> list;
     Context context;
+    private OnViewClickListener mListener;
 
     public ListAdapter(ArrayList<Contest> list,Context context) {
         this.list = list;
         this.context=context;
+    }
+
+    public void setOnViewClickListener(OnViewClickListener listener){
+        mListener = listener;
     }
 
     @NonNull
@@ -37,7 +42,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater is used to convert xml format to view
         View view = LayoutInflater.from(context).inflate(R.layout.item_alarm, parent, false);
-        return new viewHolder(view);
+
+//        view.setOnClickListener();
+        return new viewHolder(view, mListener);
     }
 
 
@@ -124,11 +131,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
     }
 
     // viewHolder class
-    public class viewHolder extends RecyclerView.ViewHolder {
+    public static class viewHolder extends RecyclerView.ViewHolder {
         TextView name,site,duration,start;
         ImageView logoImage,alertAlarm;
 
-        public viewHolder(@NonNull View itemView) {
+        public viewHolder(@NonNull View itemView, OnViewClickListener listener) {
             super(itemView);
             name=itemView.findViewById(R.id.contestName);
             duration=itemView.findViewById(R.id.durationTime);
@@ -137,6 +144,25 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
             logoImage=itemView.findViewById(R.id.logoImageView);
             alertAlarm=itemView.findViewById(R.id.alertAlarm);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClicked(position);
+                        }
+                    }
+                }
+            });
         }
     }
+
+    public interface OnViewClickListener {
+        void onItemClicked(int position);
+    }
+
 }
+
+

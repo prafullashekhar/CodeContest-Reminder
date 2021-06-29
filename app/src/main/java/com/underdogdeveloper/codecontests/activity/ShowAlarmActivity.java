@@ -32,19 +32,25 @@ public class ShowAlarmActivity extends AppCompatActivity {
         // add data to alarmModelList
         // Getting all the alarms saved in database using sqliteDatabase
         AlarmModel model = new AlarmModel();
-        DbHandler handler = new DbHandler(this);
-        alarmModelList.clear();
-        int i=0;
-        while (true){
-            model = handler.getAlarm(i+1);
-            if(model.getSno()==0)
-                break;
-            else{
-                alarmModelList.add(model);
-                i++;
-            }
-        }
-        handler.close();
+//        DbHandler handler = new DbHandler(this);
+//        alarmModelList.clear();
+//        int i=0;
+//        while (true){
+//            model = handler.getAlarm(i+1);
+//            if(model.getSno()==0)
+//                break;
+//            else{
+//                alarmModelList.add(model);
+//                i++;
+//            }
+//        }
+//        handler.close();
+
+        // example of adding
+        Contest contest= new Contest();
+        contest.setName("mohan");
+        model.setContest(contest);
+        alarmModelList.add(model);
 
 
         adapter= new AlarmAdapter(this, alarmModelList);
