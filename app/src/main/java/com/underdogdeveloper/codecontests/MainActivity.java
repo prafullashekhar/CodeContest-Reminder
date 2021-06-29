@@ -67,18 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter=new ListAdapter(contestList,this);
 
-        // handling click on item_contest and opening the url
-        adapter.setOnViewClickListener(new ListAdapter.OnViewClickListener() {
-            @Override
-            public void onItemClicked(int position){
-
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(MainActivity.this, Uri.parse(contestList.get(position).getUrl()));
-            }
-        });
-
-
     }
 
     @Override
@@ -155,9 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "check internet connection", Toast.LENGTH_SHORT).show();
             }
         });
-
         requestQueue.add(jsonArrayRequest);
-
     }
 
 }

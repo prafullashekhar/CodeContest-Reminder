@@ -8,21 +8,21 @@ public class AlarmModel {
     public AlarmModel(){
     }
 
-    public AlarmModel(int hour, int minute, int alarmState, String strDate, Contest contest){
-        this.hour = hour;
-        this.minute = minute;
-        this.alarmState = alarmState;
-        this.strDate = strDate;
-        this.contest = contest;
-    }
+//    public AlarmModel(int hour, int minute, int alarmState, String strDate, Contest contest){
+//        this.hour = hour;
+//        this.minute = minute;
+//        this.alarmState = alarmState;
+//        this.strDate = strDate;
+//        this.contest = contest;
+//    }
 
     // Sting startTime format = "2021-08-01T06:55:00.000Z"
-    public AlarmModel(String startTime, Contest contest){
-        year = Integer.parseInt(startTime.substring(0, 4));
-        month = Integer.parseInt(startTime.substring(5, 7));
-        date = Integer.parseInt(startTime.substring(8, 10));
-        hour = Integer.parseInt(startTime.substring(11, 13));
-        minute = Integer.parseInt(startTime.substring(14, 16));
+    public AlarmModel(Contest contest){
+        year = Integer.parseInt(contest.getStart_time().substring(0, 4));
+        month = Integer.parseInt(contest.getStart_time().substring(5, 7));
+        date = Integer.parseInt(contest.getStart_time().substring(8, 10));
+        hour = Integer.parseInt(contest.getStart_time().substring(11, 13));
+        minute = Integer.parseInt(contest.getStart_time().substring(14, 16));
 
         this.contest = contest;
     }

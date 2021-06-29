@@ -42,7 +42,7 @@ public class DbHandler extends SQLiteOpenHelper {
 //        get the alarm data from database
         SQLiteDatabase database=this.getReadableDatabase();
         AlarmModel alarmModel=new AlarmModel();
-        Cursor cursor=database.query("ALARM",new String[]{"sno,HOUR,MINUTE,DATE,ALARMSTATE"},"sno=?",new String[]{String.valueOf(sno)},null,null,null);
+        Cursor cursor=database.query("ALARM",new String[]{"sno,HOUR,MINUTE,STRDATE,ALARMSTATE"},"sno=?",new String[]{String.valueOf(sno)},null,null,null);
         if(cursor!=null && cursor.moveToFirst()){
             alarmModel.setSno(cursor.getInt(0));
             alarmModel.setHour(cursor.getInt(1));

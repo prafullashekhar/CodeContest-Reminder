@@ -122,35 +122,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
         return list.size();
     }
 
-    private void setAlarmOn(AlarmModel model){
-        int year = model.getYear();
-        int month = model.getMonth();
-        int date = model.getDate();
-        int hour = model.getHour();
-        int minute = model.getMinute();
-
-        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReciever.class);
-
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(context,0,intent,0);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
-        calendar.set(Calendar.DAY_OF_MONTH, date);
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
-
-        alarmManager.setExact(
-                AlarmManager.RTC_WAKEUP,
-                calendar.getTimeInMillis(),
-                pendingIntent
-        );
-    }
-
 
     public class ReminderViewHolder extends RecyclerView.ViewHolder {
         TextView name,site,duration,start;

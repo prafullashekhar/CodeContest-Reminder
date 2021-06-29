@@ -32,6 +32,7 @@ public class ShowAlarmActivity extends AppCompatActivity {
         // add data to alarmModelList
         // Getting all the alarms saved in database using sqliteDatabase
         AlarmModel model = new AlarmModel();
+
 //        DbHandler handler = new DbHandler(this);
 //        alarmModelList.clear();
 //        int i=0;
@@ -51,7 +52,6 @@ public class ShowAlarmActivity extends AppCompatActivity {
         contest.setName("mohan");
         model.setContest(contest);
         alarmModelList.add(model);
-
 
         adapter= new AlarmAdapter(this, alarmModelList);
 
