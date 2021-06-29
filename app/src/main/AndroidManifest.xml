@@ -18,9 +18,11 @@
 
 
         <activity android:name=".activity.ShowAlarmActivity"></activity>
-        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".SignInActivity">
+        <activity android:name=".SignInActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
