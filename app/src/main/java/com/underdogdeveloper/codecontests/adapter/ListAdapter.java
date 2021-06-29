@@ -4,17 +4,23 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.underdogdeveloper.codecontests.MainActivity;
 import com.underdogdeveloper.codecontests.R;
 import com.underdogdeveloper.codecontests.model.AlarmModel;
 import com.underdogdeveloper.codecontests.model.Contest;
@@ -26,25 +32,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
     ArrayList<Contest> list;
     Context context;
-    private OnViewClickListener mListener;
-
     public ListAdapter(ArrayList<Contest> list,Context context) {
         this.list = list;
         this.context=context;
     }
-
-    public void setOnViewClickListener(OnViewClickListener listener){
-        mListener = listener;
-    }
-
+    
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater is used to convert xml format to view
-        View view = LayoutInflater.from(context).inflate(R.layout.item_alarm, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_contest, parent, false);
 
 //        view.setOnClickListener();
-        return new viewHolder(view, mListener);
+        return new viewHolder(view);
     }
 
 
@@ -82,6 +82,25 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
                 holder.logoImage.setImageResource(R.drawable.topcoder_logo);
                 break;
         }
+        holder.contestOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(context, Uri.parse(contest.getUrl()));
+            }
+        });
+        
+        holder.alertAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAlarmDatabase(contest);
+            }
+        });
+    }
+
+    private void setAlarmDatabase(Contest contest) {
+        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
     }
 
     public String getStringFormat(String startTime){
@@ -134,8 +153,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
     public static class viewHolder extends RecyclerView.ViewHolder {
         TextView name,site,duration,start;
         ImageView logoImage,alertAlarm;
+        LinearLayout contestOpen;
 
-        public viewHolder(@NonNull View itemView, OnViewClickListener listener) {
+        public viewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.contestName);
             duration=itemView.findViewById(R.id.durationTime);
@@ -144,25 +164,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
 
             logoImage=itemView.findViewById(R.id.logoImageView);
             alertAlarm=itemView.findViewById(R.id.alertAlarm);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(listener != null){
-                        int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            listener.onItemClicked(position);
-                        }
-                    }
-                }
-            });
+            contestOpen=itemView.findViewById(R.id.contestOpen);
         }
     }
-
-    public interface OnViewClickListener {
-        void onItemClicked(int position);
-    }
-
 }
 
 
