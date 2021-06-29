@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/marginstart"
-        android:src="@drawable/ic_alert_on"/>
+        android:src="@drawable/general_contest_logo"/>
 
     <LinearLayout
         android:id="@+id/contestOpen"
@@ -88,5 +88,5 @@
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_alert_on"/>
+        android:src="@drawable/ic_baseline_alarm_24"/>
 </RelativeLayout>
