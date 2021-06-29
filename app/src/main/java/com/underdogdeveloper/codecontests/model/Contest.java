@@ -18,6 +18,12 @@ public class Contest {
         this.site = site;
     }
 
+    public Contest(String name, String url, String site) {
+        this.name = name;
+        this.url = url;
+        this.start_time = start_time;
+        this.site = site;
+    }
 
     public String getName() {
         return name;

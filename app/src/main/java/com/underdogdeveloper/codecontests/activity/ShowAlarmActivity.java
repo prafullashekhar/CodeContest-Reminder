@@ -1,7 +1,9 @@
 package com.underdogdeveloper.codecontests.activity;
 
 import android.app.AlarmManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,38 +30,27 @@ public class ShowAlarmActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.show_alarm_recyclerView);
         alarmModelList = new ArrayList<>();
-
-        // add data to alarmModelList
-        // Getting all the alarms saved in database using sqliteDatabase
-        AlarmModel model = new AlarmModel();
-
-//        DbHandler handler = new DbHandler(this);
-//        alarmModelList.clear();
-//        int i=0;
-//        while (true){
-//            model = handler.getAlarm(i+1);
-//            if(model.getSno()==0)
-//                break;
-//            else{
-//                alarmModelList.add(model);
-//                i++;
-//            }
-//        }
-//        handler.close();
-
-        // example of adding
-        Contest contest= new Contest();
-        contest.setName("mohan");
-        contest.setSite("CodeForces");
-        contest.setUrl("https://www.google.com");
-        model.setContest(contest);
-        alarmModelList.add(model);
-
         adapter= new AlarmAdapter(this, alarmModelList);
-
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+        DbHandler handler=new DbHandler(this);
+        for(int i=0;;i++){
+            AlarmModel alarmModel=handler.getAlarm(i+1);
+            if(alarmModel.getSno()!=0){
+                Contest contest=alarmModel.getContest();
+                Log.d("Alarm",contest.getName());
+                Log.d("Alarm",alarmModel.getStrDate());
+                alarmModelList.add(alarmModel);
+                continue;
+            }
+            else {
+                break;
+            }
+        }
 
         recyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+    }
+    private void getData(){
+
     }
 }

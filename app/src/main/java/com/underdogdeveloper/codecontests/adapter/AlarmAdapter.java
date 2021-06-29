@@ -49,13 +49,13 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
 
         Contest contest = model.getContest();
         holder.name.setText(contest.getName());
-//        holder.name.setSelected(true);
-//        holder.site.setText(contest.getSite());
-//        holder.duration.setText((int) contest.getDuration());
-//        String startTimeWithoutFormat=contest.getStart_time();
-//        String startTimewithFormat=getStringFormat(startTimeWithoutFormat);
-//        holder.start.setText(startTimewithFormat);
-
+        holder.name.setSelected(true);
+        holder.site.setText(contest.getSite());
+        holder.duration.setText("");
+        int hour=model.getHour();
+        int minute=model.getMinute();
+        String startTime= ""+hour +":"+ minute +" "+ model.getDate() +"-"+ model.getMonth() +"-"+ model.getYear();
+        holder.start.setText(startTime);
         // setting logo of various sites
         switch(contest.getSite()){
             case "CodeForces":
@@ -95,47 +95,6 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
 
     private void deleteAlarmDatabase(AlarmModel model) {
         Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
-    }
-
-    public String getStringFormat(String startTime){
-        String formatString=null;
-        String time=startTime.substring(11,16);
-        String year=startTime.substring(0,4);
-        String month=startTime.substring(5,7);
-        String date=startTime.substring(8,10);
-        month=numToEng(Integer.parseInt(month));
-        formatString=time+" "+date+"-"+month+"-"+year;
-        return formatString;
-    }
-    public String numToEng(int month){
-        String engMonth=null;
-        switch (month){
-            case 1: engMonth="Jan";
-                break;
-            case  2: engMonth="Feb";
-                break;
-            case  3: engMonth="Mar";
-                break;
-            case  4: engMonth="Apr";
-                break;
-            case  5: engMonth="May";
-                break;
-            case  6: engMonth="Jun";
-                break;
-            case  7: engMonth="Jul";
-                break;
-            case  8: engMonth="Aug";
-                break;
-            case  9: engMonth="Sep";
-                break;
-            case  10: engMonth="Oct";
-                break;
-            case  11: engMonth="Nov";
-                break;
-            case  12: engMonth="Dec";
-                break;
-        }
-        return  engMonth;
     }
 
     @Override
