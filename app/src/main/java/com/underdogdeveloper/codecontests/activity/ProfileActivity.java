@@ -14,15 +14,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.underdogdeveloper.codecontests.MainActivity;
+
 import com.underdogdeveloper.codecontests.R;
 
 import com.squareup.picasso.Picasso;
 import com.underdogdeveloper.codecontests.adapter.ContestHistoryAdapter;
-import com.underdogdeveloper.codecontests.model.Contest;
+
 import com.underdogdeveloper.codecontests.model.ContestHistory;
 
 import org.json.JSONArray;

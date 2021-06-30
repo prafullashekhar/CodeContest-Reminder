@@ -11,17 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.underdogdeveloper.codecontests.BroadCasts.AlarmReciever;
-import com.underdogdeveloper.codecontests.MainActivity;
+
 import com.underdogdeveloper.codecontests.R;
 import com.underdogdeveloper.codecontests.dataBase.DbHandler;
 import com.underdogdeveloper.codecontests.model.AlarmModel;
@@ -83,6 +83,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
             case "TopCoder":
                 holder.logoImage.setImageResource(R.drawable.topcoder_logo);
                 break;
+            default:
+                holder.logoImage.setImageResource(R.drawable.general_contest_logo);
         }
         holder.contestOpen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +112,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.viewHolder> {
         // adding to database
         DbHandler handler = new DbHandler(context);
         handler.addAlarm(model);
-        Toast.makeText(context, "Alarm Added", Toast.LENGTH_SHORT).show();
         handler.close();
     }
 

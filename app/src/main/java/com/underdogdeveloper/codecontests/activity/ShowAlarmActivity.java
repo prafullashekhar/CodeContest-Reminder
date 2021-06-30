@@ -1,7 +1,6 @@
 package com.underdogdeveloper.codecontests.activity;
 
-import android.app.AlarmManager;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.underdogdeveloper.codecontests.R;
 import com.underdogdeveloper.codecontests.adapter.AlarmAdapter;
-import com.underdogdeveloper.codecontests.adapter.ListAdapter;
+
 import com.underdogdeveloper.codecontests.dataBase.DbHandler;
 import com.underdogdeveloper.codecontests.model.AlarmModel;
 import com.underdogdeveloper.codecontests.model.Contest;

@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -24,15 +22,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -106,7 +99,6 @@ public class SignInActivity extends AppCompatActivity {
                 try {
                     progressDialog.dismiss();
                     String status=response.getString("status");
-                    Log.d("Nipun",status);
                     if(status.equals("OK")){
                         logintWith(userId);
                     }else{

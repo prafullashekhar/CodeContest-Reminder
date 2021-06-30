@@ -8,14 +8,6 @@ public class AlarmModel {
     public AlarmModel(){
     }
 
-//    public AlarmModel(int hour, int minute, int alarmState, String strDate, Contest contest){
-//        this.hour = hour;
-//        this.minute = minute;
-//        this.alarmState = alarmState;
-//        this.strDate = strDate;
-//        this.contest = contest;
-//    }
-
     // Sting startTime format = "2021-08-01T06:55:00.000Z"
     public AlarmModel(Contest contest){
         this.contest = contest;

@@ -1,9 +1,9 @@
 package com.underdogdeveloper.codecontests.adapter;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+
+
 import android.content.Context;
-import android.content.Intent;
+
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.underdogdeveloper.codecontests.BroadCasts.AlarmReciever;
 import com.underdogdeveloper.codecontests.R;
 import com.underdogdeveloper.codecontests.model.AlarmModel;
 import com.underdogdeveloper.codecontests.model.Contest;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderViewHolder>{
     Context context;
@@ -76,6 +75,8 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ReminderView
             case "TopCoder":
                 holder.logoImage.setImageResource(R.drawable.topcoder_logo);
                 break;
+            default:
+                holder.logoImage.setImageResource(R.drawable.general_contest_logo);
         }
         holder.contestOpen.setOnClickListener(new View.OnClickListener() {
             @Override
